@@ -1,0 +1,14 @@
+body {
+	padding-top: 40px;
+}
+.navbar .navbar-inner {
+	padding-left: 24px;
+}
+.login-form-outer {
+	padding-top: 24px;
+}
+.login-form {
+	width: 228px;
+	margin-left: auto;
+	margin-right: auto;
+}
