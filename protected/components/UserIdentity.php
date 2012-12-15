@@ -18,19 +18,6 @@ class UserIdentity extends CUserIdentity
 	private $_id;
 	public function authenticate()
 	{
-		// $users=array(
-		// 	// username => password
-		// 	'demo'=>'demo',
-		// 	'admin'=>'admin',
-		// );
-		// if(!isset($users[$this->username]))
-		// 	$this->errorCode=self::ERROR_USERNAME_INVALID;
-		// else if($users[$this->username]!==$this->password)
-		// 	$this->errorCode=self::ERROR_PASSWORD_INVALID;
-		// else
-		// 	$this->errorCode=self::ERROR_NONE;
-		// return !$this->errorCode;
-
 		$member = Member::model()->find(
 			'username=:u AND password=:p', 
 			array(
@@ -41,7 +28,8 @@ class UserIdentity extends CUserIdentity
 			return FALSE;
 		}
 		$this->_id = $member->UserID;
-		$this->setState('SubID',$member->SubID);
+		$this->setState('subId',$member->SubID);
+		$this->setState('insId',$member->InsID);
 		$this->errorCode=self::ERROR_NONE;
 		return TRUE;
 	}

@@ -50,7 +50,7 @@ return array(
 			'emulatePrepare' => true,
 			'username' => 'root',
 			'password' => '1234',
-			'charset' => 'latin1'
+			'charset' => 'utf8'
 		),
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
