@@ -10,8 +10,13 @@
 	<div class="navbar navbar-inverse navbar-fixed-top">
 		<div class="navbar-inner">
 			<a class="brand" href="<?php echo Yii::app()->request->baseUrl; ?>">Rice Department of Thialand</a>
-			<ul class="nav">
+			<?php if(!Yii::app()->user->isGuest): ?>
+			<ul class="nav pull-right">
+				<li>
+					<a href="<?php echo Yii::app()->request->baseUrl; ?>?r=site/logout"><i class="icon icon-white icon-lock"></i>&nbsp;Sign Out</a>
+				</li>
 			</ul>
+			<?php endif; ?>
 		</div>
 	</div>
 	<?php echo $content; ?>
