@@ -7,8 +7,13 @@ body {
 .login-form-outer {
 	padding-top: 24px;
 }
-.login-form {
-	width: 228px;
+.login-form, .login-form-alert {
 	margin-left: auto;
 	margin-right: auto;
+}
+.login-form {
+	width: 228px;
+}
+.login-form-alert {
+	width: 300px;
 }

@@ -27,7 +27,15 @@ class SiteController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$this->render('index');
+		if(!Yii::app()->user->isGuest)
+		{
+			$this->render('data');
+			return;
+		}
+		$model = new LoginForm;
+		$this->render('index', array(
+			'model'=>$model
+		));
 	}
 
 	/**
@@ -96,7 +104,7 @@ class SiteController extends Controller
 			}
 		}
 		// display the login form
-		$this->render('login',array('model'=>$model));
+		$this->render('index',array('model'=>$model));
 	}
 
 	/**

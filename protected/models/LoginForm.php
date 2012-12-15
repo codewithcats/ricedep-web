@@ -71,7 +71,7 @@ class LoginForm extends CFormModel
 			Yii::app()->user->login($this->_identity,$duration);
 			return true;
 		}
-		else
-			return false;
+		$this->addError('password','Incorrect username or password.');
+		return false;
 	}
 }
