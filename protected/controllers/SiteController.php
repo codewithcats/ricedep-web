@@ -29,7 +29,7 @@ class SiteController extends Controller
 	{
 		if(!Yii::app()->user->isGuest)
 		{
-			$this->render('data');
+			$this->redirect(array('resourceUsage/index'));
 			return;
 		}
 		$model = new LoginForm;
