@@ -44,46 +44,27 @@ class ResourceUsageController extends Controller
 
 	public function actionCentralEnergy()
 	{
-		$member = Yii::app()->user;
-		if(in_array($member->subId, array('0', '1')))
-		{
-			$ins = Institute::model()->find(
+		$ins = Institute::model()->find(
 			'InsID=:i', array(':i'=>'a01')
-			);
-			$records = ResourceUsage::model()->findAll(
+		);
+		$records = ResourceUsage::model()->findAll(
 			'SubID=:s AND InsID=:i',
 			array(
 				':s'=>'1',
 				':i'=>'a01'
 			)
 		);
-			$this->render('centralEnergy', array(
-				'records'=>$records,
-				'institute'=>$ins
-			));
-			return;
-		}
-		return;
+		$this->render('centralEnergy', array(
+			'records'=>$records,
+			'institute'=>$ins
+		));
 	}
 
 	public function actionEnergyFiscalYear()
-	{
-		$member = Yii::app()->user;
-		if(in_array($member->subId, array('0', '1')))
-		{
-			$names = Institute::model()->findAll('SubID > 0 ORDER BY InsID ASC');
-			$records = ResourceUsage::model()->findAll(
-			'SubID=:s AND InsID=:i',
-				array(
-					':s'=>'1',
-					':i'=>'a01'
-				)
-			);
-			$this->render('energyFiscalYear', array(
-				'names'=>$names
-			));
-			return;
-		}
+	{	
+		$this->render('energyFiscalYear', array(
+			
+		));
 		return;
 	}
 
