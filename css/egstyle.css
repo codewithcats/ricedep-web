@@ -20,3 +20,16 @@ body {
 .table td.center, .table th.center {
 	text-align: center;
 }
+.form .control-group .control-label {
+	position: relative;
+}
+.form .control-group .control-label .required {
+	color: #FF0202;
+	font-weight: bold;
+	font-size: 1.3em;
+	position: absolute;
+	right: -10px;
+}
+.form .control-group .controls .help-inline.error {
+	color: #FF0202;
+}

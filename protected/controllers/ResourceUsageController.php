@@ -44,7 +44,18 @@ class ResourceUsageController extends Controller
 
 	public function actionAddRecord()
 	{
-		$this->render('addRecordForm');
+		$model = new ResourceUsageForm;
+		if(isset($_POST['ResourceUsageForm']))
+		{
+			$model->attributes = $_POST['ResourceUsageForm'];
+			if($model->validate()) {
+				$this->redirect(array('resourceUsage/index'));
+				return;
+			}
+		}
+		$this->render('addRecordForm', array(
+			'model'=>$model
+		));
 	}
 
 	public function actionCentralEnergy()
