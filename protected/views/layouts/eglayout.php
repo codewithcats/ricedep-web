@@ -11,6 +11,9 @@
 		<div class="navbar-inner">
 			<a class="brand" href="<?php echo Yii::app()->request->baseUrl; ?>">Rice Department of Thialand</a>
 			<?php if(!Yii::app()->user->isGuest): ?>
+			<ul class="nav pull-left">
+				<li><a href="<?php echo Yii::app()->request->baseUrl; ?>?r=resourceUsage/addRecord"><i class="icon icon-white icon-plus"></i>&nbsp;เพิ่มข้อมูล</a></li>
+			</ul>
 			<ul class="nav pull-right">
 				<li>
 					<a href="<?php echo Yii::app()->request->baseUrl; ?>?r=site/logout"><i class="icon icon-white icon-lock"></i>&nbsp;Sign Out</a>

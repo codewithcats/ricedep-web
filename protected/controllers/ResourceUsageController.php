@@ -42,6 +42,11 @@ class ResourceUsageController extends Controller
 		));
 	}
 
+	public function actionAddRecord()
+	{
+		$this->render('addRecordForm');
+	}
+
 	public function actionCentralEnergy()
 	{
 		$ins = Institute::model()->find(
