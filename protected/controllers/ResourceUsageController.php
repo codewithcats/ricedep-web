@@ -52,7 +52,8 @@ class ResourceUsageController extends Controller
 		if(isset($_POST['ResourceUsageForm']))
 		{
 			$model->attributes = $_POST['ResourceUsageForm'];
-			if($model->validate()) {
+			if($model->validate())
+			{
 				$user = Yii::app()->user;
 				$usage = new ResourceUsage;
 				$usage->SubID = $user->subId;

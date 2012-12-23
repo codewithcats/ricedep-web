@@ -20,6 +20,9 @@ body {
 .table td.center, .table th.center {
 	text-align: center;
 }
+.table td.r {
+	text-align: right;
+}
 .form .control-group .control-label {
 	position: relative;
 }

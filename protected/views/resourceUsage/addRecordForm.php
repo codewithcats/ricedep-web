@@ -27,6 +27,7 @@
 					<option value="11">พฤศจิกายน</option>
 					<option value="12">ธันวาคม</option>
 				</select>
+				<?php echo $form->error($model, 'month', array('class'=>'help-inline error')); ?>
 			</div>
 		</div>
 		<div class="control-group">

@@ -39,4 +39,20 @@ class ResourceUsageForm extends CFormModel
 			'poil'=>'จำนวนบาท',
 		);
 	}
+
+	public function validate($attributes=NULL, $clearErrors=true)
+	{
+		if($clearErrors) $this->clearErrors();
+		$usage = ResourceUsage::model()->find(
+			'ins_month_num=:m AND ins_year=:y',
+			array(':m'=>$this->month, ':y'=>$this->year)
+		);
+		$valid = $usage==null;
+		if(!$valid)
+		{
+			$this->addError('month', 'มีข้อมูลของเดือนและปีที่ถูกเลือกอยู่ในฐานข้อมูลแล้ว');
+			return false;
+		}
+		return parent::validate($attributes, $clearErrors);
+	}
 }
