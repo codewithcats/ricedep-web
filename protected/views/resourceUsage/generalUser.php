@@ -39,7 +39,7 @@
 				<td class="r"><?php echo $r->Uwater; ?></td>
 				<td class="r"><?php echo $r->Pwater; ?></td>
 				<td>
-					<a href="#"><i class="icon icon-trash"></i>&nbsp;ลบ</a>
+					<a href="<?php echo Yii::app()->request->baseUrl; ?>/?r=resourceUsage/deleteRecord&id=<?php echo $r->UID; ?>"><i class="icon icon-trash"></i>&nbsp;ลบ</a>
 				</td>
 			</tr>
 			<?php endforeach; ?>

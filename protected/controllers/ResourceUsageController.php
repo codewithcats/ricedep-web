@@ -83,6 +83,29 @@ class ResourceUsageController extends Controller
 		));
 	}
 
+	public function actionDeleteRecord($id)
+	{
+		$usage = ResourceUsage::model()->findByPk($id);
+		if($usage==null)
+		{
+			$this->redirect(
+				array('resourceUsage/index',
+					'msg'=>'ไม่พบข้อมูลที่ต้องการลบ',
+					'msgType'=>'error'));
+		}
+		if($usage->delete())
+		{
+			$this->redirect(
+				array('resourceUsage/index',
+					'msg'=>'ข้อมูลถูกลบเรียบร้อยแล้ว',
+					'msgType'=>'success'));
+		}
+		$this->redirect(
+			array('resourceUsage/index',
+				'msg'=>'เกิดข้อผิดพลาดขณะทำการลบข้อมูล',
+				'msgType'=>'error'));
+	}
+
 	public function actionCentralEnergy()
 	{
 		$ins = Institute::model()->find(
