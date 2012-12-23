@@ -1,4 +1,10 @@
 <div class="container">
+	<?php if($msg): ?>
+	<div class="alert alert-<?php echo $msgType; ?>">
+		<button type="button" class="close" data-dismiss="alert">&times;</button>
+		<strong><?php echo $msg; ?></strong>
+	</div>
+	<?php endif; ?>
 	<h3>ข้อมูลการใช้พลังงาน <?php echo $institute->NameIns; ?></h3>
 	<table class="table table-bordered">
 		<thead>
@@ -34,3 +40,5 @@
 		</tbody>
 	</table>
 </div>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/bootstrap/js/bootstrap.min.js"></script>

@@ -2,7 +2,7 @@
 
 class ResourceUsageController extends Controller
 {
-	public function actionIndex()
+	public function actionIndex($msg=false, $msgType=false)
 	{
 		$member = Yii::app()->user;
 		if(in_array($member->subId, array('0', '1')))
@@ -10,11 +10,11 @@ class ResourceUsageController extends Controller
 			$this->renderCentralUserPage($member);
 			return;
 		}
-		$this->renderGeneralUserPage($member);
+		$this->renderGeneralUserPage($member, $msg, $msgType);
 		return;
 	}
 
-	private function renderGeneralUserPage($member)
+	private function renderGeneralUserPage($member, $msg=false, $msgType=false)
 	{
 		$ins = Institute::model()->find(
 			'InsID=:i', array(':i'=>$member->insId)
@@ -28,7 +28,9 @@ class ResourceUsageController extends Controller
 		);
 		$this->render('generalUser', array(
 			'records'=>$records,
-			'institute'=>$ins
+			'institute'=>$ins,
+			'msg'=>$msg,
+			'msgType'=>$msgType,
 		));
 	}
 
@@ -49,12 +51,32 @@ class ResourceUsageController extends Controller
 		{
 			$model->attributes = $_POST['ResourceUsageForm'];
 			if($model->validate()) {
-				$this->redirect(array('resourceUsage/index'));
-				return;
+				$user = Yii::app()->user;
+				$usage = new ResourceUsage;
+				$usage->SubID = $user->subId;
+				$usage->InsID = $user->insId;
+				$usage->ins_month_num = $model->month;
+				$usage->ins_year = $model->year;
+				$usage->Uoil = $model->uoil;
+				$usage->Poil = $model->poil;
+				$usage->Uwater = $model->uwater;
+				$usage->Pwater = $model->pwater;
+				$usage->Uelec = $model->uelec;
+				$usage->Pelec = $model->pelec;
+				$usage->budget_year = $model->month>=10? $model->year+1: $model->year;
+
+				if($usage->save())
+				{
+					$this->redirect(
+						array('resourceUsage/index',
+							'msg'=>'ข้อมูลถูกบันทึกเรียบร้อยแล้ว',
+							'msgType'=>'success'));
+					return;
+				}
 			}
 		}
 		$this->render('addRecordForm', array(
-			'model'=>$model
+			'model'=>$model,
 		));
 	}
 

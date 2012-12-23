@@ -8,7 +8,9 @@
  * @property string $SubID
  * @property string $InsID
  * @property string $ins_month
- * @property string $ins_year
+ * @property integer $ins_month_num
+ * @property integer $ins_year
+ * @property integer $budget_year
  * @property string $Uoil
  * @property string $Uwater
  * @property string $Uelec
@@ -47,14 +49,15 @@ class ResourceUsage extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('SubID, InsID, ins_month, ins_year, Uoil, Uwater, Uelec, Poil, Pwater, Pelec', 'required'),
+			array('SubID, InsID, ins_year, Uoil, Uwater, Uelec, Poil, Pwater, Pelec', 'required'),
+			array('ins_month_num, ins_year, budget_year', 'numerical', 'integerOnly'=>true),
 			array('SubID', 'length', 'max'=>2),
-			array('InsID, ins_year, Uoil, Uwater, Uelec, Poil, Pwater, Pelec', 'length', 'max'=>10),
+			array('InsID, Uoil, Uwater, Uelec, Poil, Pwater, Pelec', 'length', 'max'=>10),
 			array('ins_month', 'length', 'max'=>20),
 			array('Ur1, Ur2, Ur3', 'length', 'max'=>500),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('UID, SubID, InsID, ins_month, ins_year, Uoil, Uwater, Uelec, Poil, Pwater, Pelec, Ur1, Ur2, Ur3', 'safe', 'on'=>'search'),
+			array('UID, SubID, InsID, ins_month, ins_month_num, ins_year, budget_year, Uoil, Uwater, Uelec, Poil, Pwater, Pelec, Ur1, Ur2, Ur3', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -79,7 +82,9 @@ class ResourceUsage extends CActiveRecord
 			'SubID' => 'Sub',
 			'InsID' => 'Ins',
 			'ins_month' => 'Ins Month',
+			'ins_month_num' => 'Ins Month Num',
 			'ins_year' => 'Ins Year',
+			'budget_year' => 'Budget Year',
 			'Uoil' => 'Uoil',
 			'Uwater' => 'Uwater',
 			'Uelec' => 'Uelec',
@@ -107,7 +112,9 @@ class ResourceUsage extends CActiveRecord
 		$criteria->compare('SubID',$this->SubID,true);
 		$criteria->compare('InsID',$this->InsID,true);
 		$criteria->compare('ins_month',$this->ins_month,true);
-		$criteria->compare('ins_year',$this->ins_year,true);
+		$criteria->compare('ins_month_num',$this->ins_month_num);
+		$criteria->compare('ins_year',$this->ins_year);
+		$criteria->compare('budget_year',$this->budget_year);
 		$criteria->compare('Uoil',$this->Uoil,true);
 		$criteria->compare('Uwater',$this->Uwater,true);
 		$criteria->compare('Uelec',$this->Uelec,true);
