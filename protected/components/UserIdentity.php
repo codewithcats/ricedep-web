@@ -30,6 +30,7 @@ class UserIdentity extends CUserIdentity
 		$this->_id = $member->UserID;
 		$this->setState('subId',$member->SubID);
 		$this->setState('insId',$member->InsID);
+		$this->setState('username',$member->Username);
 		$this->errorCode=self::ERROR_NONE;
 		return TRUE;
 	}

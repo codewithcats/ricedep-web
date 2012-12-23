@@ -12,7 +12,9 @@
 			<a class="brand" href="<?php echo Yii::app()->request->baseUrl; ?>">กรมการข้าว</a>
 			<?php if(!Yii::app()->user->isGuest): ?>
 			<ul class="nav pull-left">
+				<?php if(Yii::app()->user->username !== 'admin'): ?>
 				<li><a href="<?php echo Yii::app()->request->baseUrl; ?>?r=resourceUsage/addRecord"><i class="icon icon-white icon-plus"></i>&nbsp;เพิ่มข้อมูล</a></li>
+				<?php endif; ?>
 			</ul>
 			<ul class="nav pull-right">
 				<li>

@@ -15,6 +15,8 @@ UPDATE `energy`.`usetb` SET ins_month_num = 11 WHERE ins_month = 'พฤศจ�
 UPDATE `energy`.`usetb` SET ins_month_num = 12 WHERE ins_month = 'ธันวาคม';
 -- change ins_year type to YEAR
 ALTER TABLE `energy`.`usetb` CHANGE COLUMN `ins_year` `ins_year` INT NOT NULL ;
+-- change ins_month to NULL able
+ALTER TABLE `energy`.`usetb` CHANGE COLUMN `ins_month` `ins_month` VARCHAR(20) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NULL  ;
 -- add budget year column
 ALTER TABLE `energy`.`usetb` ADD COLUMN `budget_year` INT NULL AFTER `ins_year`;
 -- update budget year
