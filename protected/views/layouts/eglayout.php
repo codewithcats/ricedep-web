@@ -2,21 +2,22 @@
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-	<title>Rice Department of Thialand</title>
+	<title>กรมการข้าว</title>
 	<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/egstyle.css">
 </head>
 <body>
 	<div class="navbar navbar-inverse navbar-fixed-top">
 		<div class="navbar-inner">
-			<a class="brand" href="<?php echo Yii::app()->request->baseUrl; ?>">Rice Department of Thialand</a>
+			<a class="brand" href="<?php echo Yii::app()->request->baseUrl; ?>">กรมการข้าว</a>
 			<?php if(!Yii::app()->user->isGuest): ?>
 			<ul class="nav pull-left">
 				<li><a href="<?php echo Yii::app()->request->baseUrl; ?>?r=resourceUsage/addRecord"><i class="icon icon-white icon-plus"></i>&nbsp;เพิ่มข้อมูล</a></li>
 			</ul>
 			<ul class="nav pull-right">
 				<li>
-					<a href="<?php echo Yii::app()->request->baseUrl; ?>?r=site/logout"><i class="icon icon-white icon-lock"></i>&nbsp;Sign Out</a>
+					<a href="<?php echo Yii::app()->request->baseUrl; ?>?r=site/logout">
+						<i class="icon icon-white icon-lock"></i>&nbsp;ออกจากระบบ</a>
 				</li>
 			</ul>
 			<?php endif; ?>

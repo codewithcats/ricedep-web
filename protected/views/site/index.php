@@ -3,21 +3,22 @@
 
 		<form action="<?php echo Yii::app()->request->baseUrl; ?>/?r=site/login" method="post">
 			<fieldset>
-				<legend>Sign In</legend>
-				<label>Username</label>
+				<legend>เข้าสู่ระบบ</legend>
+				<label>ผู้ใช้งาน</label>
 				<input type="text" name="LoginForm[username]">
-				<label>Password</label>
+				<label>รหัสผ่าน</label>
 				<input type="password" name="LoginForm[password]">
 				<div>
-					<button type="submit" class="btn btn-primary"><i class="icon icon-white icon-lock"></i>&nbsp;Sign In</button>
+					<button type="submit" class="btn btn-primary">
+						<i class="icon icon-white icon-lock"></i>&nbsp;เข้าสู่ระบบ</button>
 				</div>
 			</fieldset>
 		</form>
 	</div>
 	<?php if($model->hasErrors()): ?>
 	<div class="alert alert-block alert-error login-form-alert">
-		<h4>Sign in failed!</h4>
-		Check your username and password, please
+		<h4>ไม่สามารถเข้าสู่ระบบได้</h4>
+		กรุณาตรวจสอบชื่อผู้ใช้งานและรหัสผ่านอีกครั้ง
 	</div>
 	<?php endif; ?>
 </div>
