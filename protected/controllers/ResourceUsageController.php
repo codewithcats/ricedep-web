@@ -20,10 +20,12 @@ class ResourceUsageController extends Controller
 			'InsID=:i', array(':i'=>$member->insId)
 		);
 		$records = ResourceUsage::model()->findAll(
-			'SubID=:s AND InsID=:i',
 			array(
-				':s'=>$member->subId,
-				':i'=>$member->insId
+				'condition'=>'SubID=:s AND InsID=:i',
+				'params'=>array(
+					':s'=>$member->subId,
+					':i'=>$member->insId),
+				'order'=>'ins_year DESC, ins_month_num DESC'
 			)
 		);
 		$this->render('generalUser', array(
