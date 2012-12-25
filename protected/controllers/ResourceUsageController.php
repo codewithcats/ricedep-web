@@ -111,11 +111,14 @@ class ResourceUsageController extends Controller
 		$ins = Institute::model()->find(
 			'InsID=:i', array(':i'=>'a01')
 		);
+		$member = Yii::app()->user;
 		$records = ResourceUsage::model()->findAll(
-			'SubID=:s AND InsID=:i',
 			array(
-				':s'=>'1',
-				':i'=>'a01'
+				'condition'=>'SubID=:s AND InsID=:i',
+				'params'=>array(
+					':s'=>$member->subId,
+					':i'=>$member->insId),
+				'order'=>'ins_year DESC, ins_month_num DESC'
 			)
 		);
 		$this->render('centralEnergy', array(

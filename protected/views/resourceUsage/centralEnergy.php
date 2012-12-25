@@ -8,6 +8,7 @@
 				<th colspan="2" style="text-align:center;">น้ำมันเชื้อเพลิง</th>
 				<th colspan="2" style="text-align:center;">ไฟฟ้า</th>
 				<th colspan="2" style="text-align:center;">น้ำ</th>
+				<th rowspan="2"></th>
 			</tr>
 			<tr>
 				<th>จำนวนหน่วย</th>
@@ -29,6 +30,9 @@
 				<td><?php echo $r->Pelec; ?></td>
 				<td><?php echo $r->Uwater; ?></td>
 				<td><?php echo $r->Pwater; ?></td>
+				<td>
+					<a href="<?php echo Yii::app()->request->baseUrl; ?>/?r=resourceUsage/deleteRecord&id=<?php echo $r->UID; ?>"><i class="icon icon-trash"></i>&nbsp;ลบ</a>
+				</td>
 			</tr>
 			<?php endforeach; ?>
 		</tbody>
