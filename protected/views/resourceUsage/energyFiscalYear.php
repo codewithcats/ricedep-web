@@ -6,8 +6,18 @@
 		$uKey = 'sum_uelec_';
 		$pKey = 'sum_pelec_';
 	}
-	else if($index === 'water') $indexValue = 'น้ำ';
-	else $indexValue = 'น้ำมัน';
+	else if($index === 'water')
+	{
+		$indexValue = 'น้ำ';
+		$uKey = 'sum_uwater_';
+		$pKey = 'sum_pwater_';
+	}
+	else
+	{
+		$indexValue = 'น้ำมัน';
+		$uKey = 'sum_uoil_';
+		$pKey = 'sum_poil_';
+	} 
 
 ?>
 <div class="container">
@@ -43,13 +53,13 @@
 				<td class="center"><?php echo $r[$pKey.'2555']==null? '-': $r[$pKey.'2555']; ?></td>
 				<?php
 					$uInc = ($r[$uKey.'2555']==null || $r[$uKey.'2554']==null)? '-': $r[$uKey.'2555'] - $r[$uKey.'2554'];
-					$uIncPercent = $uInc==='-'? '-': round($uInc/$r[$uKey.'2554']*100, 2).'%';
+					$uIncPercent = $uInc==='-' || $r[$uKey.'2554']==0? '-': round($uInc/$r[$uKey.'2554']*100, 2).'%';
 				?>
 				<td class="center"><?php echo $uInc; ?></td>
 				<td class="center"><?php echo $uIncPercent; ?></td>
 				<?php
 					$pInc = ($r[$pKey.'2555']==null || $r[$pKey.'2554']==null)? '-': $r[$pKey.'2555'] - $r[$pKey.'2554'];
-					$pIncPercent = $pInc==='-'? '-': round($pInc/$r[$pKey.'2554']*100, 2).'%';
+					$pIncPercent = $pInc==='-' || $r[$pKey.'2554']==0? '-': round($pInc/$r[$pKey.'2554']*100, 2).'%';
 				?>
 				<td class="center"><?php echo $pInc; ?></td>
 				<td class="center"><?php echo $pIncPercent; ?></td>
