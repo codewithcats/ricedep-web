@@ -22,14 +22,14 @@
 		<tbody>
 			<?php foreach ($records as $r): ?>
 			<tr>
-				<td><?php echo $r->ins_month; ?></td>
-				<td><?php echo $r->ins_year; ?></td>
-				<td><?php echo $r->Uoil; ?></td>
-				<td><?php echo $r->Poil; ?></td>
-				<td><?php echo $r->Uelec; ?></td>
-				<td><?php echo $r->Pelec; ?></td>
-				<td><?php echo $r->Uwater; ?></td>
-				<td><?php echo $r->Pwater; ?></td>
+				<td><?php echo $r->monthName; ?></td>
+				<td class="r"><?php echo $r->ins_year; ?></td>
+				<td class="r"><?php echo $r->Uoil; ?></td>
+				<td class="r"><?php echo $r->Poil; ?></td>
+				<td class="r"><?php echo $r->Uelec; ?></td>
+				<td class="r"><?php echo $r->Pelec; ?></td>
+				<td class="r"><?php echo $r->Uwater; ?></td>
+				<td class="r"><?php echo $r->Pwater; ?></td>
 				<td>
 					<a href="<?php echo Yii::app()->request->baseUrl; ?>/?r=resourceUsage/deleteRecord&id=<?php echo $r->UID; ?>"><i class="icon icon-trash"></i>&nbsp;ลบ</a>
 				</td>
